@@ -1,4 +1,4 @@
-const webpack = require("webpack"); // file configures webpack
+const webpack = require("webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
@@ -12,37 +12,33 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "build"),
     publicPath: "/",
-    filename: "bundle.js",
+    filename: "bundle.js"
   },
   devServer: {
-    // webpack has a web server
-    stats: "minimal", // reduce command line output
-    overlay: true, // overlay errors
-    historyApiFallback: true, // all requests to index.html
-    disableHostCheck: true, // chrome latest issue with webpack are next three
+    stats: "minimal",
+    overlay: true,
+    historyApiFallback: true,
+    disableHostCheck: true,
     headers: { "Access-Control-Allow-Origin": "*" },
-    https: false,
+    https: false
   },
   plugins: [
     new HtmlWebpackPlugin({
-      // see require above
       template: "src/index.html",
-      favicon: "src/favicon.ico",
-    }),
+      favicon: "src/favicon.ico"
+    })
   ],
   module: {
     rules: [
-      // what files to handle?
       {
-        test: /\.(js|jsx)$/, // look for javascript or js
-        exclude: /node_modules/, // node code, don't look
-        use: ["babel-loader", "eslint-loader"], // run babel on all javascript, webpack bundles,
-        // code will be linted after bable
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: ["babel-loader", "eslint-loader"]
       },
       {
-        test: /(\.css)$/, // webpack css processign
-        use: ["style-loader", "css-loader"],
-      },
-    ],
-  },
+        test: /(\.css)$/,
+        use: ["style-loader", "css-loader"]
+      }
+    ]
+  }
 };
