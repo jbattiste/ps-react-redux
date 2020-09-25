@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// Link doesn't post back to server
+
 const HomePage = () => (
   <div className="jumbotron">
     <h1>Pluralsight Administration</h1>

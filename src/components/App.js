@@ -11,8 +11,6 @@ function App() {
     <div className="container-fluid">
       <Header />
       <Switch>
-        {" "}
-        {/* must have exact or it will always match */}
         <Route exact path="/" component={HomePage} />
         <Route path="/about" component={AboutPage} />
         <Route path="/courses" component={CoursesPage} />
@@ -23,6 +21,3 @@ function App() {
 }
 
 export default App;
-{
-  /* remember to do this!!!! */
-}
