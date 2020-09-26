@@ -7,16 +7,16 @@ import { bindActionCreators } from "redux";
 class CoursesPage extends React.Component {
   state = {
     course: {
-      title: ""
-    }
+      title: "",
+    },
   };
 
-  handleChange = event => {
+  handleChange = (event) => {
     const course = { ...this.state.course, title: event.target.value };
     this.setState({ course });
   };
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
     this.props.actions.createCourse(this.state.course);
   };
@@ -33,7 +33,7 @@ class CoursesPage extends React.Component {
         />
 
         <input type="submit" value="Save" />
-        {this.props.courses.map(course => (
+        {this.props.courses.map((course) => (
           <div key={course.title}>{course.title}</div>
         ))}
       </form>
@@ -43,22 +43,22 @@ class CoursesPage extends React.Component {
 
 CoursesPage.propTypes = {
   courses: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
 };
 
 function mapStateToProps(state) {
   return {
-    courses: state.courses
+    courses: state.courses,
   };
 }
 
+// function determins what part of the state is needed
 function mapDispatchToProps(dispatch) {
+  // ownprops removed
   return {
-    actions: bindActionCreators(courseActions, dispatch)
+    actions: bindActionCreators(courseActions, dispatch),
   };
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CoursesPage);
+// connect function glues to redux
+export default connect(mapStateToProps, mapDispatchToProps)(CoursesPage);
